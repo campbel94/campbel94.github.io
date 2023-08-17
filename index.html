@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <head>
   <title>Chris Campbell</title>
+  <link href="/normalize.css" rel="stylesheet">
   <style>
     body {
-      text-align: center;
+      /* text-align: center;
       background: url("https://images.ctfassets.net/bth3mlrehms2/5D89r4pwpt9FyGctr3sOcP/b5d8c3dc072812ed8c3f5381ba290fc9/Nordamerika_USA_San_Francisco_Golden_Gate_Bridge.jpg?w=3863&h=2578&fl=progressive&q=50&fm=jpg");
       background-size: cover;
       /* background-position: center; */
-      color: white;
-      font-family: helvetica;
+      /* color: white;
+      font-family: helvetica; */ */
+    }
+    div {
+        height: 550px   ;
+        /* text-align: center;
+        background: url("https://images.ctfassets.net/bth3mlrehms2/5D89r4pwpt9FyGctr3sOcP/b5d8c3dc072812ed8c3f5381ba290fc9/Nordamerika_USA_San_Francisco_Golden_Gate_Bridge.jpg?w=3863&h=2578&fl=progressive&q=50&fm=jpg");
+        background-size: cover;
+        background-position: center; */
+        color: black;
+        font-family: helvetica;
+    }
+    .identifier-input {
+        /* height: 550px   ; */
+        text-align: center;
+        background: url("https://images.ctfassets.net/bth3mlrehms2/5D89r4pwpt9FyGctr3sOcP/b5d8c3dc072812ed8c3f5381ba290fc9/Nordamerika_USA_San_Francisco_Golden_Gate_Bridge.jpg?w=3863&h=2578&fl=progressive&q=50&fm=jpg");
+        background-size: cover;
+        background-position: center;
+        /* color: white;
+        font-family: helvetica; */
     }
     img {
       /*border: 1px solid #ddd;*/
@@ -20,7 +39,7 @@
       font-size: 22px;
       color: black;
       font-family: helvetica;
-      background: white;
+      background-color: white;
     }
     input {
       border: 0;
@@ -34,8 +53,19 @@
   </style>
 </head>
 <body>
-  <img src="https://yt3.googleusercontent.com/ytc/AOPolaTtP6YNpAmF5evHzzvQh4SoesqTRQR32AyAuj49WA=s900-c-k-c0x00ffffff-no-rj">
-  <p>Waddup! I'm Chris, an implemenation manager at LiveRamp. This site will be used to deploy a working Prebid configuration as well as test the LiveRamp ATS detection methods. Drop an email below!</p>
-  <input type="email" placeholder="Email">
-  <input type="submit">
+    <div class="identifier-input">
+        <img src="https://yt3.googleusercontent.com/ytc/AOPolaTtP6YNpAmF5evHzzvQh4SoesqTRQR32AyAuj49WA=s900-c-k-c0x00ffffff-no-rj">
+        <p>Waddup! I'm Chris, an implemenation manager at LiveRamp. This site will be used to deploy a working Prebid configuration as well as test the LiveRamp ATS detection methods. Drop an email below!</p>
+        <form id="example-form">
+          <label for="email" class>Your Email</label>
+          <input type="email" placeholder="Email">
+          <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="identifier-response">
+        <h2>
+            This is where the envelope API response will go:
+        </h2>
+    </div>
+  
 </body>
