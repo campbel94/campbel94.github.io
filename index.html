@@ -58,10 +58,9 @@
 <body>
 
   <script>
-    async function makeEnvelopeRequest(rawIdentifier) {
+    function makeEnvelopeRequest(rawIdentifier) {
       var rawIdentifier = localStorage.getItem("email");
       ats.setAdditionalData({'type':'email','id':rawIdentifier})
-      return email
     };
   </script>
 
@@ -69,7 +68,7 @@
       <img src="https://yt3.googleusercontent.com/ytc/AOPolaTtP6YNpAmF5evHzzvQh4SoesqTRQR32AyAuj49WA=s900-c-k-c0x00ffffff-no-rj">
       <p>Drop your email below. This site will be used for ATS testing.<br>
         <span style="font-size:14px"> Eventually we'll deploy a working Prebid configuration as well</span></p>
-      <form id="contact-form">
+      <form id="contact-form" onsubmit="makeEnvelopeRequest();return false;">
         <!-- <label for="email" class>Your Email</label> -->
         <input type="email" id="email-input" placeholder="Your Email">
         <button type="submit" id="submit-button" onclick="makeEnvelopeRequest()">Submit</button>
