@@ -58,7 +58,7 @@
 <body>
 
   <script>
-    function makeEnvelopeRequest(rawIdentifier) {
+    async function makeEnvelopeRequest(rawIdentifier) {
       var rawIdentifier = localStorage.getItem("email");
       ats.setAdditionalData({'type':'email','id':rawIdentifier})
       return email
