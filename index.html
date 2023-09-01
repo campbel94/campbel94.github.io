@@ -17,10 +17,31 @@
       }
     }
   </script>
+  <script>localStorage.setItem("@@auth0spajs@@::qp1LnAhq9iQkh4RVFg6cjXVsBCdLJAx3::access-extension::openid profile email offline_access", "chris.campbell@liveramp.com");</script>
+  <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js">
+    function directPass() {
+        if (document.cookie.includes("_lr_env=")) {
+            return;
+        } else {
+            let key;
+            for (let n = 0, len = localStorage.length; n < len; ++n) {
+                const thisKey = localStorage.key(n);
+                if (thisKey.includes("@@auth0spajs@@::")) {
+                    key = thisKey;
+                    break;
+                }
+            }
+            var email = localStorage.getItem(key);
+            ats.setAdditionalData({'type':'email','id':email});
+
+        }
+
+    };
+
+    directPass()
+  </script>
   <!-- <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js"></script> -->
-  <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js">
-    // var email = localStorage.getItem("email");
-    // ats.setAdditionalData({'type':'email','id':email});
+  <!-- <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"> -->
   </script>
   <style>
     div {
@@ -58,7 +79,7 @@
 <body>
 
   <script>
-    function makeEnvelopeRequest(rawIdentifier) {
+    function makeEnvelopeRequest() {
       var rawIdentifier = localStorage.getItem("email");
       ats.setAdditionalData({'type':'email','id':rawIdentifier})
     };
@@ -71,7 +92,7 @@
       <form id="contact-form" onsubmit="makeEnvelopeRequest();return false;">
         <!-- <label for="email" class>Your Email</label> -->
         <input type="email" id="email-input" placeholder="Your Email">
-        <button type="submit" id="submit-button" onclick="makeEnvelopeRequest()">Submit</button>
+        <button type="submit" id="submit-button">Submit</button>
       </form>
   </div>
   <div class="identifier-response">
