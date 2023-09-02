@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>Chris Campbell</title>
-  <link href="/normalize.css" rel="stylesheet">
-  <script>
+  <!-- <script>
     window.onload = function() {
       // check for local storage support
       if (localStorage) {
@@ -15,34 +14,19 @@
           localStorage.setItem('email', email);
         });
       }
-    }
-  </script>
-  <script>localStorage.setItem("@@auth0spajs@@::qp1LnAhq9iQkh4RVFg6cjXVsBCdLJAx3::access-extension::openid profile email offline_access", "chris.campbell@liveramp.com");</script>
-  <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js">
-    function directPass() {
-        if (document.cookie.includes("_lr_env=")) {
-            return;
-        } else {
-            let key;
-            for (let n = 0, len = localStorage.length; n < len; ++n) {
-                const thisKey = localStorage.key(n);
-                if (thisKey.includes("@@auth0spajs@@::")) {
-                    key = thisKey;
-                    break;
-                }
-            }
-            var email = localStorage.getItem(key);
-            ats.setAdditionalData({'type':'email','id':email});
-
-        }
-
     };
+  </script> -->
+  
+  <!-- <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js"> -->
+  <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"></script>
 
-    directPass()
-  </script>
-  <!-- <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js"></script> -->
-  <!-- <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"> -->
-  </script>
+  <!--The two script below are for testing the proposed MNG / Tribune envelope retrieval method-->
+  <!-- <script>localStorage.setItem("@@auth0spajs@@::qp1LnAhq9iQkh4RVFg6cjXVsBCdLJAx3::access-extension::openid profile email offline_access", "support@viafoura.com");</script> -->
+  <!-- <script src="./auth0Email.js"></script> -->
+
+
+
+
   <style>
     div {
         height: 550px   ;
@@ -74,16 +58,42 @@
       background: #32DC86;
       color: white;
     }
+    span {
+      font-size: 18px;
+      color: black;
+      font-family: helvetica;
+      background-color: white;
+    }
   </style>
 </head>
-<body>
 
-  <script>
+  <!-- <script>
     function makeEnvelopeRequest() {
       var rawIdentifier = localStorage.getItem("email");
       ats.setAdditionalData({'type':'email','id':rawIdentifier})
     };
-  </script>
+  </script> -->
+  <script>
+    function makeEnvelopeRequest() {
+      var rawIdentifier = document.getElementById('email-input').value; 
+      // check for local storage support
+      if (rawIdentifier == '') {
+        alert("Email field cannot be empty!");
+      } else {
+        ats.setAdditionalData({'type':'email','id':rawIdentifier});
+        localStorage.setItem('email', rawIdentifier);
+      }
+
+        
+    };
+    </script>
+    <script>
+      function displayEnvelope() {
+        let span = document.getElementById("atsEnvelopeValue");
+        var envDisplay = atob(localStorage.getItem("_lr_env"));
+        span.innerText = envDisplay
+      }
+    </script>
 
   <div class="identifier-input">
       <img src="https://yt3.googleusercontent.com/ytc/AOPolaTtP6YNpAmF5evHzzvQh4SoesqTRQR32AyAuj49WA=s900-c-k-c0x00ffffff-no-rj">
@@ -99,6 +109,11 @@
       <h2>
           This is where the envelope API response will go:
       </h2>
+      <br><br>
+      <button onclick="displayEnvelope()">Dispaly Envelope</button>
+      <p>
+        Envelope Response: <span id ="atsEnvelopeValue"></span>
+      </p>
   </div>
   
 </body>
