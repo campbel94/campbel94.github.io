@@ -34,6 +34,7 @@ window.addEventListener("envelopeModuleReady", () => {
 //             break;
 //           }
 //         }
+// //         in MNG's version 'var email = JSON.parse(localStorage.getItem(key)).body.decodedToken.user.email;
 //         var email = localStorage.getItem(key);
 //         atsenvelopemodule.setAdditionalData({'type':'email','id':email});
 //       }
