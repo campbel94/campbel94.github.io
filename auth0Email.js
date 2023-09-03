@@ -1,5 +1,5 @@
 window.addEventListener("envelopeModuleReady", () => {
-    if (document.cookie.includes("_lr_env=")) {
+    if (localStorage.getItem("_lr_env") !== null) OR (document.cookie.includes("_lr_env=")) {
         //how do wechange the if statement above to use the ats.retrieveEnvelope() method instead?
       console.log("envelope already in storage. directPass() not needed.")
       return;
