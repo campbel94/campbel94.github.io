@@ -3,12 +3,22 @@
   <title>Chris Campbell</title>
 
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K6JLTGVT');</script>
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];w[l].push({
+        'gtm.start': new Date().getTime(),
+        event:'gtm.js'
+      });
+      var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),
+      dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K6JLTGVT');
+  </script>
   <!-- End Google Tag Manager -->
+
+
   <!-- <script>
     window.onload = function() {
       // check for local storage support
@@ -25,24 +35,17 @@
     };
   </script> -->
   
-  <!-- <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js"> -->
-  <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"></script>
+
+  <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js">
+  // <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"></script>
 
   <!--The two script below are for testing the proposed MNG / Tribune envelope retrieval method-->
+  <script>localStorage.setItem("example_storage_item_1", "example1_value");</script>
+  <script>localStorage.setItem("example_storage_item_2", "example2_value");</script>
+  <script>localStorage.setItem("example_storage_item_3", "example3_value");</script>
   <script>localStorage.setItem("@@auth0spajs@@::qp1LnAhq9iQkh4RVFg6cjXVsBCdLJAx3::access-extension::openid profile email offline_access", "auth0email@gmail.com");</script>
   <!-- <script>localStorage.setItem("trb.registration.userData", "tribEmail@gmail.com");</script> -->
   <!-- <script src="./auth0Email.js"></script> -->
-
-  <!-- ignore this-->
-  <!-- <script>
-    // ATS envelope module is ready to be used.
-    window.addEventListener("envelopeModuleReady", () => {
-      atsenvelopemodule.setAdditionalData({
-        'type': 'email',
-        'id': "chris.campbell@liveramp.com"
-      });
-    });
-  </script> -->
 
 
 
