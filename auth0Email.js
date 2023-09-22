@@ -1,8 +1,8 @@
 function atsDirectPass() {
   window.addEventListener("envelopeModuleReady", function() {
     // let key;
-    for (let n = 0, len = localStorage.length; n < len; ++n) {
-      let thisKey = localStorage.key(n);
+    for (var n = 0, len = localStorage.length; n < len; ++n) {
+      var thisKey = localStorage.key(n);
       if (thisKey.includes("@@auth0spajs@@::")) {
         // var email = JSON.parse(localStorage.getItem(thisKey)).body.decodedToken.user.email;
         var email = localStorage.getItem(thisKey);
