@@ -40,6 +40,11 @@
   <!-- <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"></script> -->
 
   <!--The two script below are for testing the proposed MNG / Tribune envelope retrieval method-->
+  <script>
+    window.addEventListener("envelopeModuleReady", function(){
+      console.log("CC - envelopeModuleReady TEST")
+    });
+  </script>
   <script>localStorage.setItem("example_storage_item_1", "example1_value");</script>
   <script>localStorage.setItem("example_storage_item_2", "example2_value");</script>
   <script>localStorage.setItem("example_storage_item_3", "example3_value");</script>
