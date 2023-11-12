@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <head>
-  <title>Chris Campbell</title>
-
-  <script>
-    window.addEventListener("envelopeModuleReady", function(){
-      console.log("CC - envelopeModuleReady TEST!")
-    });
-  </script>
+  <title>ATS Demo</title>
 
   <!-- Google Tag Manager -->
-  <script>
+  <!-- <script>
     (function(w,d,s,l,i){
       w[l]=w[l]||[];w[l].push({
         'gtm.start': new Date().getTime(),
@@ -21,107 +15,96 @@
       j.async=true;
       j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K6JLTGVT');
-  </script>
+  </script> -->
   <!-- End Google Tag Manager -->
 
   <!-- <script async defer src="https://launchpad-wrapper.privacymanager.io/c59d016a-b3ff-4e33-a2d8-3e05a076195e/launchpad-liveramp.js"></script> -->
-  <!-- <script async defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"></script> -->
-
-  <!--The two script below are for testing the proposed MNG / Tribune envelope retrieval method-->
-  <script>localStorage.setItem("example_storage_item_1", "example1_value");</script>
-  <script>localStorage.setItem("example_storage_item_2", "example2_value");</script>
-  <script>localStorage.setItem("example_storage_item_3", "example3_value");</script>
-  <!-- <script>localStorage.setItem("@@auth0spajs@@::qp1LnAhq9iQkh4RVFg6cjXVsBCdLJAx3::access-extension::openid profile email offline_access", "auth0email@gmail.com");</script> -->
-  <script>localStorage.setItem("trb.registration.userData", "tribEmail@gmail.com");</script>
-  <!-- <script src="./auth0Email.js"></script> -->
-
-
-
-
+  <script src="https://cdn.jsdelivr.net/npm/jshashes@1.0.8/hashes.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script defer src="script.js"></script>
+  <script defer src="https://ats-wrapper.privacymanager.io/ats-modules/9e2e0c95-6ba0-41f6-b02f-278baaec9be0/ats.js"></script>
+  
   <style>
-    div {
-        height: 550px   ;
-        color: black;
-        font-family: helvetica;
+    body{
+      font-family: helvetica, sans-serif;
+      background-color: #0A6D41;
+      margin: 0 auto;
+      max-width: 1000px;
     }
-    .identifier-input {
-        text-align: center;
-        background: url("https://images.ctfassets.net/bth3mlrehms2/5D89r4pwpt9FyGctr3sOcP/b5d8c3dc072812ed8c3f5381ba290fc9/Nordamerika_USA_San_Francisco_Golden_Gate_Bridge.jpg?w=3863&h=2578&fl=progressive&q=50&fm=jpg");
-        background-size: cover;
-        background-position: center;
-    }
-    img {
-      padding: 5px;
-      width: 200px;
-    }
-    p {
-      font-size: 22px;
-      color: black;
-      font-family: helvetica;
-      background-color: white;
-    }
-    input {
-      border: 0;
-      padding: 10px;
-      font-size: 18px;
-    }
-    input[type="submit"] {
-      background: #32DC86;
+    header{
+      text-align: center;
       color: white;
     }
-    span {
-      font-size: 18px;
-      color: black;
-      font-family: helvetica;
-      background-color: white;
+    
+    div {
+      background-color: rgba(255,255,255, 0.75);
+      fill-opacity: .5;
+      border-radius: 5px;
+      /* max-width: 80%; */
+      margin: 40px 0 0 0;
+      padding: 20px;
+      /* padding-top: 20px;
+      padding-bottom: 20px; */
     }
+
+    span {
+      word-wrap: break-word;
+    }
+    /* #test-form-id{
+      background-color: white;
+      width: 300px;
+    } */
   </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6JLTGVT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K6JLTGVT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
   <!-- End Google Tag Manager (noscript) -->
-  <script>
-    function makeEnvelopeRequest() {
-      var rawIdentifier = document.getElementById('email-input').value; 
-      // check for local storage support
-      if (rawIdentifier == '') {
-        alert("Email field cannot be empty!");
-      } else {
-        ats.setAdditionalData({'type':'email','id':rawIdentifier});
-        localStorage.setItem('email', rawIdentifier);
-      }
 
-        
-    };
-    </script>
-    <script>
-      function displayEnvelope() {
-        let span = document.getElementById("atsEnvelopeValue");
-        var envDisplay = atob(localStorage.getItem("_lr_env"));
-        span.innerText = envDisplay
-      }
-    </script>
-
-  <div class="identifier-input">
-      <img src="https://yt3.googleusercontent.com/ytc/AOPolaTtP6YNpAmF5evHzzvQh4SoesqTRQR32AyAuj49WA=s900-c-k-c0x00ffffff-no-rj">
-      <p>Drop your email below. This site will be used for ATS testing.<br>
-        <span style="font-size:14px"> Eventually we'll deploy a working Prebid configuration as well</span></p>
-      <form id="contact-form" onsubmit="makeEnvelopeRequest();return false;">
-        <!-- <label for="email" class>Your Email</label> -->
-        <input type="email" id="email-input" placeholder="Your Email">
-        <button type="submit" id="submit-button">Submit</button>
-      </form>
-  </div>
-  <div class="identifier-response">
-      <h2>
-          This is where the envelope API response will go:
-      </h2>
-      <br><br>
-      <button onclick="displayEnvelope()">Dispaly Envelope</button>
-      <p>
-        Envelope Response: <span id ="atsEnvelopeValue"></span>
-      </p>
-  </div>
+  <!-- <img src=""> -->
   
+  <header>
+    <h1>ATS Demo Site</h1>
+    <p>This site demonstrates how the ATS tag generates a RampID envelope from emails and phone numbers collected on site.</p>
+  </header>
+
+  <div id="emailInputDiv">
+    <input type="email" id="email-input" placeholder="Your Email" type="email" size="35">
+    <button type="button" id="submit-button">Submit</button>
+    <p><b>Email input is: </b><span id="identifierSpan"></span></p>
+  </div> 
+
+  <div>
+    <h3>Hash Types</h3>
+    <!-- <button id="hashing-button">Hash Identifier</button> -->
+    <p><b>SHA256: </b><span id="sha256Span"></span></p>
+    <p><b>SHA1: </b><span id="sha1Span"></span></p>
+    <p><b>MD5: </b><span id="md5Span"></span></p>
+
+    <h3>User Location</h3>
+    <!-- <button id="geo-button">Geo Locator</button> -->
+    <p><b>Country: </b><span id="countrySpan"></span></p>
+    <p><b>Region: </b><span id="regionSpan"></span></p>
+
+    <h3>Domain</h3>
+    <!-- <button id="domain-button">Root Domain</button> -->
+    <p><span id="domainSpan"></span></p>
+
+    <h3>Envelope Request URL</h3>
+    <!-- <button id="envelopeRequest-button">Envelope Request URL</button> -->
+    <p><span id="envelopeRequestSpan"></span></p>
+
+    <h3>Envelope Response</h3>
+    <!-- <button id="envelopeResponse-button">Envelope Response</button> -->
+    <p><span id="envelopeResponseSpan"></span></p>
+  </div>
+
+  <div>
+    <h3>Clicking one of the two buttons below will pass ATS the email above, either by pulling it from the page or passing the it directly.</h3>
+    <button id="detectButton">Detect Email</button>
+    <button id="directButton">Direct Pass Email</button>
+    <p><span id="atsResponseSpan"></span></p>
+    <button id="invalidateEnvelopeButton">Remove Envelope</button>
+  </div>
+
 </body>
