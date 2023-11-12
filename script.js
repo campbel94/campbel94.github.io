@@ -74,14 +74,34 @@ async function emailDisplay(evt){
 }
 
 function detectMode(evt) {
+    // ats.triggerDetection();
     window.addEventListener("lrEnvelopePresent", async () => {
+        // ats.triggerDetection();
         const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
         console.log("lrEnvelopePresent: ", detectModeResponse);
         atsResponseSpan.innerHTML = detectModeResponse;
     });
 }
 
-function directMode(evt) {}
+function directMode(evt) {
+    if (document.getElementById("identifierSpan").innerText) {
+        ats.setAdditionalData({id: document.getElementById("identifierSpan").innerText, type: 'email'});
+        window.addEventListener("lrEnvelopePresent", async () => {
+            const directModeResponse = await atsenvelopemodule.retrieveEnvelope()
+            console.log("lrEnvelopePresent: ", directModeResponse);
+            atsResponseSpan.innerHTML = directModeResponse;
+        });
+    }
+    // window.addEventListener("lrEnvelopePresent", async () => {
+    //     ats.setAdditionalData({ 
+    //         id: 'email@liveramp.com', 
+    //         type: 'email'
+    //       });
+    //     const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
+    //     console.log("lrEnvelopePresent: ", detectModeResponse);
+    //     atsResponseSpan.innerHTML = detectModeResponse;
+    // });
+}
 
 function invalidateEnvelope(evt) {
     var envelope = ats.retrieveEnvelope();
@@ -104,4 +124,5 @@ function invalidateEnvelope(evt) {
 // Event Listeners
 idSubmitButton.addEventListener('click', emailDisplay);
 detectButton.addEventListener('click', detectMode);
+directButton.addEventListener('click', directMode);
 invalidateEnvelopeButton.addEventListener('click', invalidateEnvelope);
