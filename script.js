@@ -53,6 +53,10 @@ async function emailDisplay(evt){
         const emailHashMD5 = MD5.hex(emailInput.value);
         document.getElementById("md5Span").innerHTML = emailHashMD5
 
+        // Display ATS placement ID
+        document.getElementById("pidSpan").innerHTML = ats.outputCurrentConfiguration().ENVELOPE_MODULE_INFO.ENVELOPE_MODULE_CONFIG.placementID;
+        
+
         // Display Current geo
         const currentLocation = await window.axios.get('https://geo.privacymanager.io/');
         const countrySpan = document.getElementById("countrySpan");
