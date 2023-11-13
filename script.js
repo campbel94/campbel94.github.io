@@ -1,4 +1,6 @@
 // UI Varaibles
+let envPreviouslyGenerated = false;
+
 // email/phone submit button
 const idSubmitButton = document.getElementById('submit-button');
 const hashingButton = document.getElementById('hashing-button');
@@ -75,12 +77,25 @@ async function emailDisplay(evt){
 
 function detectMode(evt) {
     // ats.triggerDetection();
-    window.addEventListener("lrEnvelopePresent", async () => {
-        // ats.triggerDetection();
-        const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
-        console.log("lrEnvelopePresent: ", detectModeResponse);
-        atsResponseSpan.innerHTML = detectModeResponse;
-    });
+    if (document.getElementById("identifierSpan").innerText){
+        if (envPreviouslyGenerated) {
+            ats.triggerDetection();
+            window.addEventListener("lrEnvelopePresent", async () => {
+            const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
+            console.log("lrEnvelopePresent: ", detectModeResponse);
+            atsResponseSpan.innerHTML = detectModeResponse;
+            });
+        } else {
+            window.addEventListener("lrEnvelopePresent", async () => {
+            // ats.triggerDetection();
+            const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
+            console.log("lrEnvelopePresent: ", detectModeResponse);
+            atsResponseSpan.innerHTML = detectModeResponse;
+            envPreviouslyGenerated = true;
+            });
+        };
+    };
+        
 }
 
 function directMode(evt) {
@@ -91,16 +106,9 @@ function directMode(evt) {
             console.log("lrEnvelopePresent: ", directModeResponse);
             atsResponseSpan.innerHTML = directModeResponse;
         });
+        envPreviouslyGenerated = true;
     }
-    // window.addEventListener("lrEnvelopePresent", async () => {
-    //     ats.setAdditionalData({ 
-    //         id: 'email@liveramp.com', 
-    //         type: 'email'
-    //       });
-    //     const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
-    //     console.log("lrEnvelopePresent: ", detectModeResponse);
-    //     atsResponseSpan.innerHTML = detectModeResponse;
-    // });
+
 }
 
 function invalidateEnvelope(evt) {

@@ -41,7 +41,7 @@
       fill-opacity: .5;
       border-radius: 5px;
       /* max-width: 80%; */
-      margin: 40px 0 0 0;
+      margin: 20px 0 20px 0;
       padding: 20px;
       /* padding-top: 20px;
       padding-bottom: 20px; */
@@ -49,6 +49,11 @@
 
     span {
       word-wrap: break-word;
+    }
+
+    h3 {
+      text-align: center;
+      text-decoration: underline;
     }
     /* #test-form-id{
       background-color: white;
@@ -75,35 +80,46 @@
   </div> 
 
   <div>
-    <h3>Hash Types</h3>
+    <h3>API Request Parameters</h3>
     <!-- <button id="hashing-button">Hash Identifier</button> -->
-    <p><b>SHA256: </b><span id="sha256Span"></span></p>
-    <p><b>SHA1: </b><span id="sha1Span"></span></p>
-    <p><b>MD5: </b><span id="md5Span"></span></p>
+    <p><b>SHA256 Email Hash: </b><span id="sha256Span"></span></p>
+    <p><b>SHA1 Email Hash: </b><span id="sha1Span"></span></p>
+    <p><b>MD5 Email Hash: </b><span id="md5Span"></span></p>
+    <p><b>Placement ID: </b><span id="pidSpan"></span></p>
 
-    <h3>User Location</h3>
+    <!-- <h3>User Location</h3> -->
     <!-- <button id="geo-button">Geo Locator</button> -->
-    <p><b>Country: </b><span id="countrySpan"></span></p>
-    <p><b>Region: </b><span id="regionSpan"></span></p>
+    <!-- <p><b>Country: </b><span id="countrySpan"></span></p> -->
+    <!-- <p><b>Region: </b><span id="regionSpan"></span></p> -->
 
-    <h3>Domain</h3>
+    <!-- <h3>Domain</h3> -->
     <!-- <button id="domain-button">Root Domain</button> -->
-    <p><span id="domainSpan"></span></p>
+    <!-- <p><span id="domainSpan"></span></p> -->
 
     <h3>Envelope Request URL</h3>
     <!-- <button id="envelopeRequest-button">Envelope Request URL</button> -->
-    <p><span id="envelopeRequestSpan"></span></p>
+    <div><p><span id="envelopeRequestSpan"></span></p></div>
 
     <h3>Envelope Response</h3>
     <!-- <button id="envelopeResponse-button">Envelope Response</button> -->
-    <p><span id="envelopeResponseSpan"></span></p>
+    <div><p><span id="envelopeResponseSpan"></span></p></div>
+  </div>
+
+  <div>
+    <h3>Request Headers</h3>
+    <!-- <button id="geo-button">Geo Locator</button> -->
+    <p><b>User Location - Country: </b><span id="countrySpan"></span></p>
+    <p><b>User Location - Region: </b><span id="regionSpan"></span></p>
+
+    <p><b>Domain: </b><span id="domainSpan"></span></p>
+    <!-- <button id="domain-button">Root Domain</button> -->
   </div>
 
   <div>
     <h3>Clicking one of the two buttons below will pass ATS the email above, either by pulling it from the page or passing the it directly.</h3>
     <button id="detectButton">Detect Email</button>
     <button id="directButton">Direct Pass Email</button>
-    <p><span id="atsResponseSpan"></span></p>
+    <div><p><span id="atsResponseSpan"></span></p></div>
     <button id="invalidateEnvelopeButton">Remove Envelope</button>
   </div>
 
