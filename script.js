@@ -89,7 +89,6 @@ function detectMode(evt) {
             window.addEventListener("lrEnvelopePresent", async () => {
             // ats.triggerDetection();
             const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
-            console.log("lrEnvelopePresent: ", detectModeResponse);
             atsResponseSpan.innerHTML = detectModeResponse;
             envPreviouslyGenerated = true;
             });
