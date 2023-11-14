@@ -86,14 +86,16 @@ function detectMode(evt) {
             ats.triggerDetection();
             window.addEventListener("lrEnvelopePresent", async () => {
             const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
-            console.log("lrEnvelopePresent: ", detectModeResponse);
+            const detectModeResponseEndcoded = btoa(detectModeResponse);
             atsResponseSpan.innerHTML = detectModeResponse;
+            atsEncodedResponseSpan.innerHTML = detectModeResponseEndcoded;
             });
         } else {
             window.addEventListener("lrEnvelopePresent", async () => {
-            // ats.triggerDetection();
-            const detectModeResponse = await atsenvelopemodule.retrieveEnvelope()
+            const detectModeResponse = await atsenvelopemodule.retrieveEnvelope();
+            const detectModeResponseEndcoded = btoa(detectModeResponse);
             atsResponseSpan.innerHTML = detectModeResponse;
+            atsEncodedResponseSpan.innerHTML = detectModeResponseEndcoded;
             envPreviouslyGenerated = true;
             });
         };
@@ -105,9 +107,10 @@ function directMode(evt) {
     if (document.getElementById("identifierSpan").innerText) {
         ats.setAdditionalData({id: document.getElementById("identifierSpan").innerText, type: 'email'});
         window.addEventListener("lrEnvelopePresent", async () => {
-            const directModeResponse = await atsenvelopemodule.retrieveEnvelope()
-            console.log("lrEnvelopePresent: ", directModeResponse);
+            const directModeResponse = await atsenvelopemodule.retrieveEnvelope();
+            const directModeResponseEndcoded = btoa(directModeResponse);
             atsResponseSpan.innerHTML = directModeResponse;
+            atsEncodedResponseSpan.innerHTML = directModeResponseEndcoded;
         });
         envPreviouslyGenerated = true;
     }
@@ -121,6 +124,7 @@ function invalidateEnvelope(evt) {
       } else {
         ats.invalidateEnvelope();
         atsResponseSpan.innerHTML = "";
+        atsEncodedResponseSpan.innerHTML = "";
       }
     // if (typeof(envelope) != 'undefined') {
     //     ats.invalidateEnvelope();
